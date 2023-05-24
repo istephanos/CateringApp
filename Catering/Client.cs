@@ -3,6 +3,8 @@
 using System;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Catering
@@ -66,6 +68,23 @@ namespace Catering
             }
         }
 
+        private void ClientDGV_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            NumeClientTb.Text = ClientDGV.CurrentRow.Cells[1].Value.ToString();
+            PrenumeClientTb.Text = ClientDGV.CurrentRow.Cells[2].Value.ToString();
+            TelefonClientTb.Text = ClientDGV.CurrentRow.Cells[3].Value.ToString();
+            EmailClientTb.Text = ClientDGV.CurrentRow.Cells[4].Value.ToString();
+
+            if (NumeClientTb.Text == "")
+            {
+                key = 0;
+                reset();
+            }
+            else
+            {
+                key = Convert.ToInt32(ClientDGV.CurrentRow.Cells[0].Value.ToString());
+            }
+        }
 
         private void btnSalvare_Click(object sender, EventArgs e)
         {
@@ -89,7 +108,7 @@ namespace Catering
                             oracleCommand.Parameters.Add("TC", OracleDbType.Varchar2).Value = TelefonClientTb.Text;
                             oracleCommand.Parameters.Add("EC", OracleDbType.Varchar2).Value = EmailClientTb.Text;
 
-                            oracleCommand.ExecuteNonQuery(); // <- adaugare/update/stergere
+                            oracleCommand.ExecuteNonQuery(); // <- adaugare
                         }
                     }
                     reset();
@@ -100,47 +119,200 @@ namespace Catering
                     MessageBox.Show(Ex.Message);
                 }
             }
-            
         }
 
         int key = 0;
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            using (var oracleConection = new OracleConnection(connectionString))
+            if (NumeClientTb.Text == "" || PrenumeClientTb.Text == "" || TelefonClientTb.Text == "" || EmailClientTb.Text == "")
             {
-                oracleConection.Open();
-
-                using (var oracleCommand = new OracleCommand(@"Update Clienti SET NUME_CLIENT=:NC,PRENUME_CLIENT=:PC," +
-                    "TELEFON_CLIENT=:TC,EMAIL_CLIENT=:EC WHERE ID_CLIENT=:ID_CLIENT", oracleConection))
-                {
-                    oracleCommand.Parameters.Add("NC", OracleDbType.Varchar2).Value = NumeClientTb.Text;
-                    oracleCommand.Parameters.Add("PC", OracleDbType.Varchar2).Value = PrenumeClientTb.Text;
-                    oracleCommand.Parameters.Add("TC", OracleDbType.Varchar2).Value = TelefonClientTb.Text;
-                    oracleCommand.Parameters.Add("EC", OracleDbType.Varchar2).Value = EmailClientTb.Text;
-                    oracleCommand.Parameters.Add("ID_CLIENT", OracleDbType.Varchar2).Value = EmailClientTb.Text;
-
-                    oracleCommand.ExecuteNonQuery(); // <- adaugare/update/stergere
-                }
-
-            }
-        }
-
-        private void ClientDGV_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            NumeClientTb.Text = ClientDGV.CurrentRow.Cells[1].Value.ToString();
-            PrenumeClientTb.Text = ClientDGV.CurrentRow.Cells[2].Value.ToString();
-            TelefonClientTb.Text = ClientDGV.CurrentRow.Cells[3].Value.ToString();
-            EmailClientTb.Text= ClientDGV.CurrentRow.Cells[4].Value.ToString();
-
-            if(NumeClientTb.Text=="")
-            {
-                key = 0;
-                reset();
+                MessageBox.Show("Lipsesc informatii. Asigurati-va ca ati ales o inregistrare!");
             }
             else
             {
-                key = Convert.ToInt32(ClientDGV.CurrentRow.Cells[0].Value.ToString());
+                try {
+                    using (var oracleConection = new OracleConnection(connectionString))
+                    {
+                        oracleConection.Open();
+
+                        using (var oracleCommand = new OracleCommand(@"Update Clienti SET NUME_CLIENT=:NC,PRENUME_CLIENT=:PC," +
+                            "TELEFON_CLIENT=:TC,EMAIL_CLIENT=:EC WHERE ID_CLIENT=:ID_CLIENT", oracleConection))
+                        {
+                            oracleCommand.Parameters.Add("NC", OracleDbType.Varchar2).Value = NumeClientTb.Text;
+                            oracleCommand.Parameters.Add("PC", OracleDbType.Varchar2).Value = PrenumeClientTb.Text;
+                            oracleCommand.Parameters.Add("TC", OracleDbType.Varchar2).Value = TelefonClientTb.Text;
+                            oracleCommand.Parameters.Add("EC", OracleDbType.Varchar2).Value = EmailClientTb.Text;
+                            oracleCommand.Parameters.Add("ID_CLIENT", OracleDbType.Decimal).Value = key;
+
+                            oracleCommand.ExecuteNonQuery(); // <- update
+                        }
+                        reset();
+                        ShowClients();
+                    }
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message);
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (NumeClientTb.Text == "" || PrenumeClientTb.Text == "" || TelefonClientTb.Text == "" || EmailClientTb.Text == "")
+            {
+                MessageBox.Show("Selectati clientul pe care doriti sa il stergeti!");
+            }
+            else
+            {
+                try
+                {
+                    using (var oracleConection = new OracleConnection(connectionString))
+                    {
+                        oracleConection.Open();
+
+                        using (var oracleCommand = new OracleCommand(@"Delete from Clienti where ID_CLIENT=:ID_CLIENT", oracleConection))
+                        {
+                            oracleCommand.Parameters.Add("ID_CLIENT", OracleDbType.Decimal).Value = key;
+
+                            oracleCommand.ExecuteNonQuery(); // <- stergere
+                        }
+                        MessageBox.Show("Datele clientului au fost sterse");
+                        reset();
+                        ShowClients();
+                    }
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message);
+                }
+            }
+        }
+
+        private void btnCauta_Click(object sender, EventArgs e)
+        {
+                if (CautareTb.Text == "")
+                {
+                    MessageBox.Show("Introduceti numele clientului cautat!");
+                }
+                else
+                {
+                    try
+                    {
+                        string SearchData = CautareTb.Text;
+                        string Query = "SELECT * FROM Clienti";
+                        if (ColumnCb.SelectedIndex == 0)
+                        {
+                            Query += " WHERE NUME_CLIENT LIKE '%" + SearchData + "%' OR " +
+                                "PRENUME_CLIENT LIKE '%" + SearchData + "%' OR TELEFON_CLIENT LIKE '%" + SearchData + "%'";
+                            if (int.TryParse(SearchData, out _))
+                            {
+                                Query += " OR ID_CLIENT = " + SearchData;
+                            }
+                        }
+                        else
+                        {
+                            if (ColumnCb.SelectedIndex == 1 && SearchData.Length > 0)
+                            {
+                                Query += " WHERE ID_CLIENT = " + SearchData;
+                            }
+                            else if (ColumnCb.SelectedIndex == 2)
+                            {
+                                Query += " WHERE NUME_CLIENT LIKE '%" + SearchData + "%'";
+                            }
+                            else if (ColumnCb.SelectedIndex == 3)
+                            {
+                                Query += " WHERE PRENUME_CLIENT LIKE '%" + SearchData + "%'";
+                            }
+                            else if (ColumnCb.SelectedIndex == 4)
+                            {
+                                Query += " WHERE TELEFON_CLIENT LIKE '%" + SearchData + "%'";
+                            }
+                        }
+
+                        using (OracleConnection con = new OracleConnection(connectionString))
+                        {
+                            con.Open();
+                            using (OracleDataAdapter adapter = new OracleDataAdapter(Query, con))
+                            {
+                                using (DataTable dt = new DataTable("Clienti"))
+                                {
+                                    adapter.Fill(dt);
+                                    ClientDGV.DataSource = dt;
+                                }
+                            }
+                        }
+                    ShowClients();
+                    reset();
+                    }
+                    catch (Exception Ex)
+                    {
+                        MessageBox.Show(Ex.Message);
+                    }               
+                }
+        }
+
+        private void CautareTb_TextChanged(object sender, EventArgs e)
+        {
+            if (CautareTb.Text == "")
+            {
+                MessageBox.Show("Introduceti numele clientului cautat!");
+            }
+            else
+            {
+                try
+                {
+                    string SearchData = CautareTb.Text;
+                    string Query = "SELECT * FROM Clienti";
+                    if (ColumnCb.SelectedIndex == 0)
+                    {
+                        Query += " WHERE NUME_CLIENT LIKE '%" + SearchData + "%' OR " +
+                            "PRENUME_CLIENT LIKE '%" + SearchData + "%' OR TELEFON_CLIENT LIKE '%" + SearchData + "%'";
+                        if (int.TryParse(SearchData, out _))
+                        {
+                            Query += " OR ID_CLIENT = " + SearchData;
+                        }
+                    }
+                    else
+                    {
+                        if (ColumnCb.SelectedIndex == 1 && SearchData.Length > 0)
+                        {
+                            Query += " WHERE ID_CLIENT = " + SearchData;
+                        }
+                        else if (ColumnCb.SelectedIndex == 2)
+                        {
+                            Query += " WHERE NUME_CLIENT LIKE '%" + SearchData + "%'";
+                        }
+                        else if (ColumnCb.SelectedIndex == 3)
+                        {
+                            Query += " WHERE PRENUME_CLIENT LIKE '%" + SearchData + "%'";
+                        }
+                        else if (ColumnCb.SelectedIndex == 4)
+                        {
+                            Query += " WHERE TELEFON_CLIENT LIKE '%" + SearchData + "%'";
+                        }
+                    }
+
+                    using (OracleConnection con = new OracleConnection(connectionString))
+                    {
+                        con.Open();
+                        using (OracleDataAdapter adapter = new OracleDataAdapter(Query, con))
+                        {
+                            using (DataTable dt = new DataTable("Clienti"))
+                            {
+                                adapter.Fill(dt);
+                                ClientDGV.DataSource = dt;
+                            }
+                        }
+                    }
+                    ShowClients();
+                    reset();
+                }
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message);
+                }
             }
         }
     }

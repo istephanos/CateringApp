@@ -42,6 +42,11 @@
             this.PrenumeClientTb = new System.Windows.Forms.TextBox();
             this.TelefonClientTb = new System.Windows.Forms.TextBox();
             this.EmailClientTb = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.ColumnCb = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.CautareTb = new System.Windows.Forms.TextBox();
+            this.btnCauta = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ClientDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,7 +111,7 @@
             // btnSalvare
             // 
             this.btnSalvare.Font = new System.Drawing.Font("Britannic Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvare.Location = new System.Drawing.Point(183, 198);
+            this.btnSalvare.Location = new System.Drawing.Point(183, 184);
             this.btnSalvare.Name = "btnSalvare";
             this.btnSalvare.Size = new System.Drawing.Size(127, 43);
             this.btnSalvare.TabIndex = 5;
@@ -117,17 +122,18 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Britannic Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(635, 198);
+            this.btnDelete.Location = new System.Drawing.Point(635, 184);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(127, 43);
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Stergere";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
             this.btnEdit.Font = new System.Drawing.Font("Britannic Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(413, 198);
+            this.btnEdit.Location = new System.Drawing.Point(413, 184);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(127, 43);
             this.btnEdit.TabIndex = 6;
@@ -181,11 +187,62 @@
             this.EmailClientTb.Size = new System.Drawing.Size(228, 38);
             this.EmailClientTb.TabIndex = 4;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(22, 226);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(145, 31);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Coloana";
+            // 
+            // ColumnCb
+            // 
+            this.ColumnCb.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColumnCb.FormattingEnabled = true;
+            this.ColumnCb.Location = new System.Drawing.Point(28, 257);
+            this.ColumnCb.Name = "ColumnCb";
+            this.ColumnCb.Size = new System.Drawing.Size(139, 35);
+            this.ColumnCb.TabIndex = 20;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(186, 226);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(110, 31);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Cauta";
+            // 
+            // CautareTb
+            // 
+            this.CautareTb.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CautareTb.Location = new System.Drawing.Point(192, 258);
+            this.CautareTb.Name = "CautareTb";
+            this.CautareTb.Size = new System.Drawing.Size(215, 34);
+            this.CautareTb.TabIndex = 1;
+            this.CautareTb.TextChanged += new System.EventHandler(this.CautareTb_TextChanged);
+            // 
+            // btnCauta
+            // 
+            this.btnCauta.Font = new System.Drawing.Font("Britannic Bold", 13.8F);
+            this.btnCauta.Location = new System.Drawing.Point(413, 256);
+            this.btnCauta.Name = "btnCauta";
+            this.btnCauta.Size = new System.Drawing.Size(127, 35);
+            this.btnCauta.TabIndex = 21;
+            this.btnCauta.Text = "Cauta";
+            this.btnCauta.UseVisualStyleBackColor = true;
+            this.btnCauta.Click += new System.EventHandler(this.btnCauta_Click);
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.Controls.Add(this.btnCauta);
+            this.Controls.Add(this.ColumnCb);
             this.Controls.Add(this.ClientDGV);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnDelete);
@@ -193,10 +250,13 @@
             this.Controls.Add(this.EmailClientTb);
             this.Controls.Add(this.TelefonClientTb);
             this.Controls.Add(this.PrenumeClientTb);
+            this.Controls.Add(this.CautareTb);
             this.Controls.Add(this.NumeClientTb);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
@@ -224,5 +284,10 @@
         private System.Windows.Forms.TextBox PrenumeClientTb;
         private System.Windows.Forms.TextBox TelefonClientTb;
         private System.Windows.Forms.TextBox EmailClientTb;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox ColumnCb;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox CautareTb;
+        private System.Windows.Forms.Button btnCauta;
     }
 }

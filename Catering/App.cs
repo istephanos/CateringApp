@@ -19,7 +19,14 @@ namespace Catering
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            this.Close();
+            string message = "Do you want to close the application?";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void addUC(UserControl uc)
@@ -66,7 +73,5 @@ namespace Catering
         {
             moveSidePanel(btnLogout);
         }
-
-       
     }
 }

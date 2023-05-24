@@ -3,8 +3,6 @@
 using System;
 using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace Catering
@@ -19,24 +17,6 @@ namespace Catering
             ShowClients();
         }
 
-        public  void EXEMPLU()
-        {
-            using (var oracleConection = new OracleConnection(connectionString))
-            {
-                oracleConection.Open();
-
-                using (var oracleCommand = new OracleCommand(/*oracle query*/))
-                {
-                   // oracleCommand.Parameters.Add(/*adaugare parametrii*/);
-                    //
-                    //
-                    //
-
-                    oracleCommand.ExecuteReader(); // <- citire
-                    oracleCommand.ExecuteNonQuery(); // <- adaugare/update/stergere
-                }
-            }
-        }
         private void reset()
         {
             NumeClientTb.Clear();
@@ -112,6 +92,7 @@ namespace Catering
                         }
                     }
                     reset();
+                    MessageBox.Show("Client adaugat");
                     ShowClients();
                 }
                 catch (Exception Ex)
@@ -127,7 +108,7 @@ namespace Catering
         {
             if (NumeClientTb.Text == "" || PrenumeClientTb.Text == "" || TelefonClientTb.Text == "" || EmailClientTb.Text == "")
             {
-                MessageBox.Show("Lipsesc informatii. Asigurati-va ca ati ales o inregistrare!");
+                MessageBox.Show("Lipsesc informatii. Asigurati-va ca ati ales o inregistrare pe care sa o editati!");
             }
             else
             {
@@ -148,6 +129,7 @@ namespace Catering
                             oracleCommand.ExecuteNonQuery(); // <- update
                         }
                         reset();
+                        MessageBox.Show("Datele clientului au fost modificate cu succes!");
                         ShowClients();
                     }
                 }
@@ -205,7 +187,8 @@ namespace Catering
                         if (ColumnCb.SelectedIndex == 0)
                         {
                             Query += " WHERE NUME_CLIENT LIKE '%" + SearchData + "%' OR " +
-                                "PRENUME_CLIENT LIKE '%" + SearchData + "%' OR TELEFON_CLIENT LIKE '%" + SearchData + "%'";
+                                "PRENUME_CLIENT LIKE '%" + SearchData + "%' OR TELEFON_CLIENT LIKE '%" + SearchData 
+                                + "%'" + "%' OR EMAIL_CLIENT LIKE '%" + SearchData + "%'";
                             if (int.TryParse(SearchData, out _))
                             {
                                 Query += " OR ID_CLIENT = " + SearchData;
@@ -231,19 +214,17 @@ namespace Catering
                             }
                         }
 
-                        using (OracleConnection con = new OracleConnection(connectionString))
-                        {
-                            con.Open();
-                            using (OracleDataAdapter adapter = new OracleDataAdapter(Query, con))
-                            {
-                                using (DataTable dt = new DataTable("Clienti"))
-                                {
-                                    adapter.Fill(dt);
-                                    ClientDGV.DataSource = dt;
-                                }
-                            }
-                        }
-                    ShowClients();
+                    using (OracleConnection con = new OracleConnection(connectionString))
+                    {
+                        con.Open();
+                        OracleCommand command = new OracleCommand(Query, con);
+                        OracleDataAdapter adapter = new OracleDataAdapter(command);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        ClientDGV.DataSource = dt;
+                    }
+
+                   // ShowClients();
                     reset();
                     }
                     catch (Exception Ex)
@@ -254,13 +235,7 @@ namespace Catering
         }
 
         private void CautareTb_TextChanged(object sender, EventArgs e)
-        {
-            if (CautareTb.Text == "")
-            {
-                MessageBox.Show("Introduceti numele clientului cautat!");
-            }
-            else
-            {
+        { 
                 try
                 {
                     string SearchData = CautareTb.Text;
@@ -297,23 +272,19 @@ namespace Catering
                     using (OracleConnection con = new OracleConnection(connectionString))
                     {
                         con.Open();
-                        using (OracleDataAdapter adapter = new OracleDataAdapter(Query, con))
-                        {
-                            using (DataTable dt = new DataTable("Clienti"))
-                            {
-                                adapter.Fill(dt);
-                                ClientDGV.DataSource = dt;
-                            }
-                        }
+                        OracleCommand command = new OracleCommand(Query, con);
+                        OracleDataAdapter adapter = new OracleDataAdapter(command);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        ClientDGV.DataSource = dt;
                     }
-                    ShowClients();
+
                     reset();
                 }
                 catch (Exception Ex)
                 {
                     MessageBox.Show(Ex.Message);
                 }
-            }
         }
     }
 }

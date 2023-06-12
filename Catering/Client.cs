@@ -3,7 +3,13 @@
 using System;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Catering
 {
@@ -15,6 +21,15 @@ namespace Catering
             InitializeComponent();
             this.connectionString = ConfigurationManager.AppSettings["OracleConnectionString"];
             ShowClients();
+            ClientDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ClientDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            ClientDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ClientDGV.Columns[0].HeaderText = "ID client";
+            ClientDGV.Columns[1].HeaderText = "Nume client";
+            ClientDGV.Columns[2].HeaderText = "Prenume client";
+            ClientDGV.Columns[3].HeaderText = "Telefon client";
+            ClientDGV.Columns[4].HeaderText = "Email client";
         }
 
         private void reset()
@@ -26,27 +41,27 @@ namespace Catering
         }
         private void ShowClients()
         {
-            OracleConnection con = new OracleConnection(connectionString);
-
             try
             {
-                con.Open();
-                string query = "select * from Clienti";
-                OracleDataAdapter adapter = new OracleDataAdapter(query, con);
-                OracleCommandBuilder builder = new OracleCommandBuilder(adapter);
-                var ds = new DataSet();
-                adapter.Fill(ds);
-                ClientDGV.DataSource = ds.Tables[0];
+                using (OracleConnection con = new OracleConnection(connectionString))
+                {
+                    con.Open();
+                    string query = "SELECT * FROM Clienti";
+                    OracleCommand cmd = new OracleCommand(query, con);
+                    OracleDataReader reader = cmd.ExecuteReader();
+
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+
+                    ClientDGV.DataSource = dt;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally
-            {
-                con.Close();
-            }
         }
+
 
         private void ClientDGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -68,7 +83,7 @@ namespace Catering
 
         private void btnSalvare_Click(object sender, EventArgs e)
         {
-            if(NumeClientTb.Text=="" || PrenumeClientTb.Text=="" || TelefonClientTb.Text=="" || EmailClientTb.Text=="")
+            if (NumeClientTb.Text == "" || PrenumeClientTb.Text == "" || TelefonClientTb.Text == "" || EmailClientTb.Text == "")
             {
                 MessageBox.Show("Lipsesc informatii. Asigurati-va ca ati introdus toate datele cerute!");
             }
@@ -174,68 +189,12 @@ namespace Catering
 
         private void btnCauta_Click(object sender, EventArgs e)
         {
-                if (CautareTb.Text == "")
-                {
-                    MessageBox.Show("Introduceti numele clientului cautat!");
-                }
-                else
-                {
-                    try
-                    {
-                        string SearchData = CautareTb.Text;
-                        string Query = "SELECT * FROM Clienti";
-                        if (ColumnCb.SelectedIndex == 0)
-                        {
-                            Query += " WHERE NUME_CLIENT LIKE '%" + SearchData + "%' OR " +
-                                "PRENUME_CLIENT LIKE '%" + SearchData + "%' OR TELEFON_CLIENT LIKE '%" + SearchData 
-                                + "%'" + "%' OR EMAIL_CLIENT LIKE '%" + SearchData + "%'";
-                            if (int.TryParse(SearchData, out _))
-                            {
-                                Query += " OR ID_CLIENT = " + SearchData;
-                            }
-                        }
-                        else
-                        {
-                            if (ColumnCb.SelectedIndex == 1 && SearchData.Length > 0)
-                            {
-                                Query += " WHERE ID_CLIENT = " + SearchData;
-                            }
-                            else if (ColumnCb.SelectedIndex == 2)
-                            {
-                                Query += " WHERE NUME_CLIENT LIKE '%" + SearchData + "%'";
-                            }
-                            else if (ColumnCb.SelectedIndex == 3)
-                            {
-                                Query += " WHERE PRENUME_CLIENT LIKE '%" + SearchData + "%'";
-                            }
-                            else if (ColumnCb.SelectedIndex == 4)
-                            {
-                                Query += " WHERE TELEFON_CLIENT LIKE '%" + SearchData + "%'";
-                            }
-                        }
-
-                    using (OracleConnection con = new OracleConnection(connectionString))
-                    {
-                        con.Open();
-                        OracleCommand command = new OracleCommand(Query, con);
-                        OracleDataAdapter adapter = new OracleDataAdapter(command);
-                        DataTable dt = new DataTable();
-                        adapter.Fill(dt);
-                        ClientDGV.DataSource = dt;
-                    }
-
-                   // ShowClients();
-                    reset();
-                    }
-                    catch (Exception Ex)
-                    {
-                        MessageBox.Show(Ex.Message);
-                    }               
-                }
-        }
-
-        private void CautareTb_TextChanged(object sender, EventArgs e)
-        { 
+            if (CautareTb.Text == "")
+            {
+                MessageBox.Show("Introduceti numele clientului cautat!");
+            }
+            else
+            {
                 try
                 {
                     string SearchData = CautareTb.Text;
@@ -243,7 +202,8 @@ namespace Catering
                     if (ColumnCb.SelectedIndex == 0)
                     {
                         Query += " WHERE NUME_CLIENT LIKE '%" + SearchData + "%' OR " +
-                            "PRENUME_CLIENT LIKE '%" + SearchData + "%' OR TELEFON_CLIENT LIKE '%" + SearchData + "%'";
+                            "PRENUME_CLIENT LIKE '%" + SearchData + "%' OR TELEFON_CLIENT LIKE '%" + SearchData
+                            + "%'" + "%' OR EMAIL_CLIENT LIKE '%" + SearchData + "%'";
                         if (int.TryParse(SearchData, out _))
                         {
                             Query += " OR ID_CLIENT = " + SearchData;
@@ -279,12 +239,164 @@ namespace Catering
                         ClientDGV.DataSource = dt;
                     }
 
+                    // ShowClients();
                     reset();
                 }
                 catch (Exception Ex)
                 {
                     MessageBox.Show(Ex.Message);
                 }
+            }
+        }
+
+        private void CautareTb_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string SearchData = CautareTb.Text;
+                string Query = "SELECT * FROM Clienti";
+                if (ColumnCb.SelectedIndex == 0)
+                {
+                    Query += " WHERE NUME_CLIENT LIKE '%" + SearchData + "%' OR " +
+                        "PRENUME_CLIENT LIKE '%" + SearchData + "%' OR TELEFON_CLIENT LIKE '%" + SearchData + "%'";
+                    if (int.TryParse(SearchData, out _))
+                    {
+                        Query += " OR ID_CLIENT = " + SearchData;
+                    }
+                }
+                else
+                {
+                    if (ColumnCb.SelectedIndex == 1 && SearchData.Length > 0)
+                    {
+                        Query += " WHERE ID_CLIENT = " + SearchData;
+                    }
+                    else if (ColumnCb.SelectedIndex == 2)
+                    {
+                        Query += " WHERE NUME_CLIENT LIKE '%" + SearchData + "%'";
+                    }
+                    else if (ColumnCb.SelectedIndex == 3)
+                    {
+                        Query += " WHERE PRENUME_CLIENT LIKE '%" + SearchData + "%'";
+                    }
+                    else if (ColumnCb.SelectedIndex == 4)
+                    {
+                        Query += " WHERE TELEFON_CLIENT LIKE '%" + SearchData + "%'";
+                    }
+                }
+
+                using (OracleConnection con = new OracleConnection(connectionString))
+                {
+                    con.Open();
+                    OracleCommand command = new OracleCommand(Query, con);
+                    OracleDataAdapter adapter = new OracleDataAdapter(command);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    ClientDGV.DataSource = dt;
+                }
+
+                reset();
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+
+        //validari
+        //validare Nume
+        private void eventNumeClientTb(object sender, EventArgs e)
+        {
+            string nume = NumeClientTb.Text.Trim();
+
+            if (string.IsNullOrEmpty(nume))
+            {
+                labelNumeClient.ForeColor = Color.Black;
+                errorProvider1.Clear();
+            }
+            else if (nume.Length > 15 || !nume.All(char.IsLetter))
+            {
+                labelNumeClient.ForeColor = Color.Red;
+                errorProvider1.SetError(NumeClientTb, "Numele contine doar litere!");
+            }
+            else
+            {
+                labelNumeClient.ForeColor = Color.Black;
+                errorProvider1.Clear();
+            }
+        }
+
+        //validare prenume
+        private void eventPrenumeClientTb(object sender, EventArgs e)
+        {
+            string prenumeClient = PrenumeClientTb.Text.Trim();
+            string prenume = prenumeClient.Replace("-", "").Replace(" ", "");
+
+            if (string.IsNullOrEmpty(prenume))
+            {
+                labelPrenumeClient.ForeColor = Color.Black;
+                errorProvider1.Clear();
+            }
+            else if (prenume.Length > 15 || !Regex.IsMatch(prenume, @"^[a-zA-Z]+([ -][a-zA-Z]+)*$"))
+            {
+                labelPrenumeClient.ForeColor = Color.Red;
+                errorProvider1.SetError(PrenumeClientTb, "Prenumele conține doar litere și permite un singur caracter spațiu sau linie între cuvinte!");
+            }
+            else
+            {
+                labelPrenumeClient.ForeColor = Color.Black;
+                errorProvider1.Clear();
+            }
+
+        }
+
+
+        //validare email
+        private void eventEmailClient(object sender, EventArgs e)
+        {
+            string email = EmailClientTb.Text.Trim();
+            string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+            if (string.IsNullOrEmpty(email))
+            {
+                labelEmailClient.ForeColor = Color.Black;
+                errorProvider1.Clear();
+            }
+            else if (!Regex.IsMatch(email, emailPattern))
+            {
+                labelEmailClient.ForeColor = Color.Red;
+                errorProvider1.SetError(EmailClientTb, "Adresa de e-mail nu este validă.");
+            }
+            else
+            {
+                labelEmailClient.ForeColor = Color.Black;
+                errorProvider1.Clear();
+            }
+        }
+
+        //validare numar de telefon
+        private void eventTelefonClientTb(object sender, EventArgs e)
+        {
+            string telefon = TelefonClientTb.Text.Trim();
+
+            // Înlăturăm spațiile și cratimele din numărul de telefon
+            string numarTelefon = telefon.Replace(" ", "").Replace("-", "");
+
+            if (string.IsNullOrEmpty(numarTelefon))
+            {
+                labelTelefonClient.ForeColor = Color.Black;
+                errorProvider1.Clear();
+            }
+            else if (!Regex.IsMatch(numarTelefon, @"^\+?[0-9]{10}$"))
+            {
+                labelTelefonClient.ForeColor = Color.Red;
+                errorProvider1.SetError(TelefonClientTb, "Numărul de telefon nu este valid.");
+            }
+            else
+            {
+                labelTelefonClient.ForeColor = Color.Black;
+                errorProvider1.Clear();
+            }
         }
     }
 }
+

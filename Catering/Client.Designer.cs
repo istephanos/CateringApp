@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelNumeClient = new System.Windows.Forms.Label();
+            this.labelPrenumeClient = new System.Windows.Forms.Label();
+            this.labelTelefonClient = new System.Windows.Forms.Label();
+            this.labelEmailClient = new System.Windows.Forms.Label();
             this.NumeClientTb = new System.Windows.Forms.TextBox();
             this.btnSalvare = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -51,7 +52,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.CautareTb = new System.Windows.Forms.TextBox();
             this.btnCauta = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ClientDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -64,45 +67,45 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Introducere date clienti";
             // 
-            // label2
+            // labelNumeClient
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 96);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 31);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Nume";
+            this.labelNumeClient.AutoSize = true;
+            this.labelNumeClient.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNumeClient.Location = new System.Drawing.Point(22, 96);
+            this.labelNumeClient.Name = "labelNumeClient";
+            this.labelNumeClient.Size = new System.Drawing.Size(89, 31);
+            this.labelNumeClient.TabIndex = 0;
+            this.labelNumeClient.Text = "Nume";
             // 
-            // label3
+            // labelPrenumeClient
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(268, 96);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 31);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Prenume";
+            this.labelPrenumeClient.AutoSize = true;
+            this.labelPrenumeClient.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPrenumeClient.Location = new System.Drawing.Point(268, 96);
+            this.labelPrenumeClient.Name = "labelPrenumeClient";
+            this.labelPrenumeClient.Size = new System.Drawing.Size(144, 31);
+            this.labelPrenumeClient.TabIndex = 0;
+            this.labelPrenumeClient.Text = "Prenume";
             // 
-            // label4
+            // labelTelefonClient
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(517, 96);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(135, 31);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Telefon";
+            this.labelTelefonClient.AutoSize = true;
+            this.labelTelefonClient.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTelefonClient.Location = new System.Drawing.Point(517, 96);
+            this.labelTelefonClient.Name = "labelTelefonClient";
+            this.labelTelefonClient.Size = new System.Drawing.Size(135, 31);
+            this.labelTelefonClient.TabIndex = 0;
+            this.labelTelefonClient.Text = "Telefon";
             // 
-            // label5
+            // labelEmailClient
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(762, 96);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 31);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Email";
+            this.labelEmailClient.AutoSize = true;
+            this.labelEmailClient.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEmailClient.Location = new System.Drawing.Point(762, 96);
+            this.labelEmailClient.Name = "labelEmailClient";
+            this.labelEmailClient.Size = new System.Drawing.Size(101, 31);
+            this.labelEmailClient.TabIndex = 0;
+            this.labelEmailClient.Text = "Email";
             // 
             // NumeClientTb
             // 
@@ -111,6 +114,7 @@
             this.NumeClientTb.Name = "NumeClientTb";
             this.NumeClientTb.Size = new System.Drawing.Size(228, 38);
             this.NumeClientTb.TabIndex = 1;
+            this.NumeClientTb.TextChanged += new System.EventHandler(this.eventNumeClientTb);
             // 
             // btnSalvare
             // 
@@ -164,9 +168,9 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGoldenrod;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.PeachPuff;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Peru;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ClientDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ClientDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -192,7 +196,7 @@
             this.ClientDGV.RowHeadersWidth = 51;
             this.ClientDGV.RowTemplate.Height = 24;
             this.ClientDGV.Size = new System.Drawing.Size(976, 339);
-            this.ClientDGV.TabIndex = 8;
+            this.ClientDGV.TabIndex = 10;
             this.ClientDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClientDGV_CellClick);
             // 
             // PrenumeClientTb
@@ -202,6 +206,7 @@
             this.PrenumeClientTb.Name = "PrenumeClientTb";
             this.PrenumeClientTb.Size = new System.Drawing.Size(228, 38);
             this.PrenumeClientTb.TabIndex = 2;
+            this.PrenumeClientTb.TextChanged += new System.EventHandler(this.eventPrenumeClientTb);
             // 
             // TelefonClientTb
             // 
@@ -210,6 +215,7 @@
             this.TelefonClientTb.Name = "TelefonClientTb";
             this.TelefonClientTb.Size = new System.Drawing.Size(228, 38);
             this.TelefonClientTb.TabIndex = 3;
+            this.TelefonClientTb.TextChanged += new System.EventHandler(this.eventTelefonClientTb);
             // 
             // EmailClientTb
             // 
@@ -218,6 +224,7 @@
             this.EmailClientTb.Name = "EmailClientTb";
             this.EmailClientTb.Size = new System.Drawing.Size(228, 38);
             this.EmailClientTb.TabIndex = 4;
+            this.EmailClientTb.TextChanged += new System.EventHandler(this.eventEmailClient);
             // 
             // label7
             // 
@@ -243,7 +250,7 @@
             this.ColumnCb.Location = new System.Drawing.Point(28, 257);
             this.ColumnCb.Name = "ColumnCb";
             this.ColumnCb.Size = new System.Drawing.Size(139, 35);
-            this.ColumnCb.TabIndex = 20;
+            this.ColumnCb.TabIndex = 8;
             this.ColumnCb.Text = "All";
             // 
             // label8
@@ -262,7 +269,7 @@
             this.CautareTb.Location = new System.Drawing.Point(192, 258);
             this.CautareTb.Name = "CautareTb";
             this.CautareTb.Size = new System.Drawing.Size(215, 34);
-            this.CautareTb.TabIndex = 1;
+            this.CautareTb.TabIndex = 9;
             this.CautareTb.TextChanged += new System.EventHandler(this.CautareTb_TextChanged);
             // 
             // btnCauta
@@ -271,10 +278,14 @@
             this.btnCauta.Location = new System.Drawing.Point(413, 256);
             this.btnCauta.Name = "btnCauta";
             this.btnCauta.Size = new System.Drawing.Size(127, 35);
-            this.btnCauta.TabIndex = 21;
+            this.btnCauta.TabIndex = 9;
             this.btnCauta.Text = "Cauta";
             this.btnCauta.UseVisualStyleBackColor = true;
             this.btnCauta.Click += new System.EventHandler(this.btnCauta_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // Client
             // 
@@ -292,17 +303,18 @@
             this.Controls.Add(this.PrenumeClientTb);
             this.Controls.Add(this.CautareTb);
             this.Controls.Add(this.NumeClientTb);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelEmailClient);
+            this.Controls.Add(this.labelTelefonClient);
+            this.Controls.Add(this.labelPrenumeClient);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelNumeClient);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Name = "Client";
             this.Size = new System.Drawing.Size(1030, 668);
             ((System.ComponentModel.ISupportInitialize)(this.ClientDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -311,10 +323,10 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelNumeClient;
+        private System.Windows.Forms.Label labelPrenumeClient;
+        private System.Windows.Forms.Label labelTelefonClient;
+        private System.Windows.Forms.Label labelEmailClient;
         private System.Windows.Forms.TextBox NumeClientTb;
         private System.Windows.Forms.Button btnSalvare;
         private System.Windows.Forms.Button btnDelete;
@@ -329,5 +341,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox CautareTb;
         private System.Windows.Forms.Button btnCauta;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

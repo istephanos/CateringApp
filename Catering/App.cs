@@ -16,19 +16,7 @@ namespace Catering
         {
             InitializeComponent();
         }
-
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-            string message = "Do you want to close the application?";
-            string title = "Close Window";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, title, buttons);
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-        }
-
+ 
         private void addUC(UserControl uc)
         {
             panelCenter.Controls.Clear();
@@ -69,9 +57,29 @@ namespace Catering
             addUC(new Produs());
         }
 
+        private void btnComandaProduse_Click(object sender, EventArgs e)
+        {
+            moveSidePanel(btnComandaProduse);
+            addUC(new ComandaProdus());
+        }
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
             moveSidePanel(btnLogout);
         }
+
+        private void closeAppBtn_Click(object sender, EventArgs e)
+        {
+            string message = "Do you want to close the application?";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        
     }
 }

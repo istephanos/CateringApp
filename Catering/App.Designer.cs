@@ -30,10 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.closeAppBtn = new System.Windows.Forms.PictureBox();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panelSlide = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnComandaProduse = new System.Windows.Forms.Button();
             this.btnProdus = new System.Windows.Forms.Button();
             this.btnEveniment = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
@@ -62,7 +63,7 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closeAppBtn)).BeginInit();
             this.panelLeft.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.panelCenter.SuspendLayout();
@@ -77,31 +78,33 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(79, 44);
+            this.pictureBox1.Location = new System.Drawing.Point(92, 44);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(165, 162);
+            this.pictureBox1.Size = new System.Drawing.Size(120, 121);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox6
+            // closeAppBtn
             // 
-            this.pictureBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(983, 1);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(46, 42);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 1;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
+            this.closeAppBtn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.closeAppBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeAppBtn.Image = ((System.Drawing.Image)(resources.GetObject("closeAppBtn.Image")));
+            this.closeAppBtn.Location = new System.Drawing.Point(983, 1);
+            this.closeAppBtn.Name = "closeAppBtn";
+            this.closeAppBtn.Size = new System.Drawing.Size(46, 42);
+            this.closeAppBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.closeAppBtn.TabIndex = 1;
+            this.closeAppBtn.TabStop = false;
+            this.closeAppBtn.Click += new System.EventHandler(this.closeAppBtn_Click);
             // 
             // panelLeft
             // 
+            this.panelLeft.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelLeft.BackColor = System.Drawing.Color.SandyBrown;
             this.panelLeft.Controls.Add(this.panelSlide);
             this.panelLeft.Controls.Add(this.btnLogout);
+            this.panelLeft.Controls.Add(this.btnComandaProduse);
             this.panelLeft.Controls.Add(this.btnProdus);
             this.panelLeft.Controls.Add(this.btnEveniment);
             this.panelLeft.Controls.Add(this.btnHome);
@@ -116,7 +119,7 @@
             // panelSlide
             // 
             this.panelSlide.BackColor = System.Drawing.Color.PeachPuff;
-            this.panelSlide.Location = new System.Drawing.Point(22, 215);
+            this.panelSlide.Location = new System.Drawing.Point(22, 171);
             this.panelSlide.Name = "panelSlide";
             this.panelSlide.Size = new System.Drawing.Size(10, 75);
             this.panelSlide.TabIndex = 7;
@@ -127,13 +130,27 @@
             this.btnLogout.Font = new System.Drawing.Font("Algerian", 13.8F);
             this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(38, 599);
+            this.btnLogout.Location = new System.Drawing.Point(38, 621);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(247, 75);
-            this.btnLogout.TabIndex = 2;
+            this.btnLogout.TabIndex = 6;
             this.btnLogout.Text = "  Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnComandaProduse
+            // 
+            this.btnComandaProduse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComandaProduse.Font = new System.Drawing.Font("Algerian", 13.8F);
+            this.btnComandaProduse.Image = ((System.Drawing.Image)(resources.GetObject("btnComandaProduse.Image")));
+            this.btnComandaProduse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnComandaProduse.Location = new System.Drawing.Point(38, 531);
+            this.btnComandaProduse.Name = "btnComandaProduse";
+            this.btnComandaProduse.Size = new System.Drawing.Size(247, 75);
+            this.btnComandaProduse.TabIndex = 5;
+            this.btnComandaProduse.Text = "    Comanda";
+            this.btnComandaProduse.UseVisualStyleBackColor = true;
+            this.btnComandaProduse.Click += new System.EventHandler(this.btnComandaProduse_Click);
             // 
             // btnProdus
             // 
@@ -141,11 +158,11 @@
             this.btnProdus.Font = new System.Drawing.Font("Algerian", 13.8F);
             this.btnProdus.Image = ((System.Drawing.Image)(resources.GetObject("btnProdus.Image")));
             this.btnProdus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProdus.Location = new System.Drawing.Point(38, 506);
+            this.btnProdus.Location = new System.Drawing.Point(38, 442);
             this.btnProdus.Name = "btnProdus";
             this.btnProdus.Size = new System.Drawing.Size(247, 75);
-            this.btnProdus.TabIndex = 2;
-            this.btnProdus.Text = "  Produs";
+            this.btnProdus.TabIndex = 4;
+            this.btnProdus.Text = "  Produse";
             this.btnProdus.UseVisualStyleBackColor = true;
             this.btnProdus.Click += new System.EventHandler(this.btnProdus_Click);
             // 
@@ -155,11 +172,11 @@
             this.btnEveniment.Font = new System.Drawing.Font("Algerian", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEveniment.Image = ((System.Drawing.Image)(resources.GetObject("btnEveniment.Image")));
             this.btnEveniment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEveniment.Location = new System.Drawing.Point(38, 408);
+            this.btnEveniment.Location = new System.Drawing.Point(38, 351);
             this.btnEveniment.Name = "btnEveniment";
             this.btnEveniment.Size = new System.Drawing.Size(247, 75);
-            this.btnEveniment.TabIndex = 2;
-            this.btnEveniment.Text = "        Eveniment";
+            this.btnEveniment.TabIndex = 3;
+            this.btnEveniment.Text = "        Evenimente";
             this.btnEveniment.UseVisualStyleBackColor = true;
             this.btnEveniment.Click += new System.EventHandler(this.btnEveniment_Click);
             // 
@@ -169,11 +186,11 @@
             this.btnHome.Font = new System.Drawing.Font("Algerian", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
             this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(38, 215);
+            this.btnHome.Location = new System.Drawing.Point(38, 171);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(247, 75);
-            this.btnHome.TabIndex = 2;
-            this.btnHome.Text = "Home";
+            this.btnHome.TabIndex = 1;
+            this.btnHome.Text = "Acasa";
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
@@ -183,18 +200,18 @@
             this.btnClient.Font = new System.Drawing.Font("Algerian", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClient.Image = ((System.Drawing.Image)(resources.GetObject("btnClient.Image")));
             this.btnClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClient.Location = new System.Drawing.Point(38, 311);
+            this.btnClient.Location = new System.Drawing.Point(38, 262);
             this.btnClient.Name = "btnClient";
             this.btnClient.Size = new System.Drawing.Size(247, 75);
             this.btnClient.TabIndex = 2;
-            this.btnClient.Text = " Client";
+            this.btnClient.Text = " Clienti";
             this.btnClient.UseVisualStyleBackColor = true;
             this.btnClient.Click += new System.EventHandler(this.btnClient_Click);
             // 
             // panelTop
             // 
             this.panelTop.BackColor = System.Drawing.Color.SandyBrown;
-            this.panelTop.Controls.Add(this.pictureBox6);
+            this.panelTop.Controls.Add(this.closeAppBtn);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(324, 0);
             this.panelTop.Name = "panelTop";
@@ -456,7 +473,7 @@
             this.pictureBox8.TabIndex = 1;
             this.pictureBox8.TabStop = false;
             // 
-            // Home
+            // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -466,11 +483,11 @@
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.panelLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Home";
+            this.Name = "App";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closeAppBtn)).EndInit();
             this.panelLeft.ResumeLayout(false);
             this.panelTop.ResumeLayout(false);
             this.panelCenter.ResumeLayout(false);
@@ -488,7 +505,7 @@
 
         #endregion
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox closeAppBtn;
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.Panel panelTop;
         private System.Windows.Forms.Panel panelCenter;
@@ -519,5 +536,6 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Button btnComandaProduse;
     }
 }

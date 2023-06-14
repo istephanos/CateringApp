@@ -1,17 +1,11 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace Catering
 {
@@ -212,7 +206,7 @@ namespace Catering
                 labelDescriere.ForeColor = Color.Black;
                 errorProvider1.Clear();
             }
-            else if (descriereProdusTb.Text.Length > 100 || !Regex.IsMatch(descriereProdusTb.Text, @"^[a-zA-Z][a-zA-Z0-9 ]*$"))
+            else if (descriereProdusTb.Text.Length > 100 || !Regex.IsMatch(descriereProdusTb.Text, @"^[a-zA-Z][a-zA-Z0-9.,: ]*$"))
             {
                 labelDescriere.ForeColor = Color.Red;
                 errorProvider1.SetError(descriereProdusTb, "Descrierea produsului este incorecta (doar litere, cifre, excluzand " +

@@ -34,7 +34,6 @@
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panelSlide = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.btnComandaProduse = new System.Windows.Forms.Button();
             this.btnProdus = new System.Windows.Forms.Button();
             this.btnEveniment = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
@@ -53,9 +52,9 @@
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.panelStatistici = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelNrProduse = new System.Windows.Forms.Label();
+            this.labelNrEvenimente = new System.Windows.Forms.Label();
+            this.labelNrClienti = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -104,7 +103,6 @@
             this.panelLeft.BackColor = System.Drawing.Color.SandyBrown;
             this.panelLeft.Controls.Add(this.panelSlide);
             this.panelLeft.Controls.Add(this.btnLogout);
-            this.panelLeft.Controls.Add(this.btnComandaProduse);
             this.panelLeft.Controls.Add(this.btnProdus);
             this.panelLeft.Controls.Add(this.btnEveniment);
             this.panelLeft.Controls.Add(this.btnHome);
@@ -130,27 +128,13 @@
             this.btnLogout.Font = new System.Drawing.Font("Algerian", 13.8F);
             this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(38, 621);
+            this.btnLogout.Location = new System.Drawing.Point(38, 534);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(247, 75);
             this.btnLogout.TabIndex = 6;
             this.btnLogout.Text = "  Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
-            // btnComandaProduse
-            // 
-            this.btnComandaProduse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnComandaProduse.Font = new System.Drawing.Font("Algerian", 13.8F);
-            this.btnComandaProduse.Image = ((System.Drawing.Image)(resources.GetObject("btnComandaProduse.Image")));
-            this.btnComandaProduse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnComandaProduse.Location = new System.Drawing.Point(38, 531);
-            this.btnComandaProduse.Name = "btnComandaProduse";
-            this.btnComandaProduse.Size = new System.Drawing.Size(247, 75);
-            this.btnComandaProduse.TabIndex = 5;
-            this.btnComandaProduse.Text = "    Comanda";
-            this.btnComandaProduse.UseVisualStyleBackColor = true;
-            this.btnComandaProduse.Click += new System.EventHandler(this.btnComandaProduse_Click);
             // 
             // btnProdus
             // 
@@ -348,9 +332,9 @@
             // 
             this.panelStatistici.BackColor = System.Drawing.Color.SandyBrown;
             this.panelStatistici.Controls.Add(this.label6);
-            this.panelStatistici.Controls.Add(this.label11);
-            this.panelStatistici.Controls.Add(this.label9);
-            this.panelStatistici.Controls.Add(this.label7);
+            this.panelStatistici.Controls.Add(this.labelNrProduse);
+            this.panelStatistici.Controls.Add(this.labelNrEvenimente);
+            this.panelStatistici.Controls.Add(this.labelNrClienti);
             this.panelStatistici.Controls.Add(this.label10);
             this.panelStatistici.Controls.Add(this.label19);
             this.panelStatistici.Controls.Add(this.label5);
@@ -374,38 +358,38 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "Statistici";
             // 
-            // label11
+            // labelNrProduse
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label11.Location = new System.Drawing.Point(123, 495);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(46, 26);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Nr:";
+            this.labelNrProduse.AutoSize = true;
+            this.labelNrProduse.Font = new System.Drawing.Font("Arial", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNrProduse.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.labelNrProduse.Location = new System.Drawing.Point(123, 495);
+            this.labelNrProduse.Name = "labelNrProduse";
+            this.labelNrProduse.Size = new System.Drawing.Size(46, 26);
+            this.labelNrProduse.TabIndex = 2;
+            this.labelNrProduse.Text = "Nr:";
             // 
-            // label9
+            // labelNrEvenimente
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label9.Location = new System.Drawing.Point(123, 314);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 26);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Nr:";
+            this.labelNrEvenimente.AutoSize = true;
+            this.labelNrEvenimente.Font = new System.Drawing.Font("Arial", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNrEvenimente.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.labelNrEvenimente.Location = new System.Drawing.Point(123, 314);
+            this.labelNrEvenimente.Name = "labelNrEvenimente";
+            this.labelNrEvenimente.Size = new System.Drawing.Size(46, 26);
+            this.labelNrEvenimente.TabIndex = 2;
+            this.labelNrEvenimente.Text = "Nr:";
             // 
-            // label7
+            // labelNrClienti
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label7.Location = new System.Drawing.Point(123, 142);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 26);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Nr:";
+            this.labelNrClienti.AutoSize = true;
+            this.labelNrClienti.Font = new System.Drawing.Font("Arial", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNrClienti.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.labelNrClienti.Location = new System.Drawing.Point(123, 142);
+            this.labelNrClienti.Name = "labelNrClienti";
+            this.labelNrClienti.Size = new System.Drawing.Size(46, 26);
+            this.labelNrClienti.TabIndex = 2;
+            this.labelNrClienti.Text = "Nr:";
             // 
             // label10
             // 
@@ -526,9 +510,9 @@
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Panel panelStatistici;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelNrProduse;
+        private System.Windows.Forms.Label labelNrEvenimente;
+        private System.Windows.Forms.Label labelNrClienti;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label5;
@@ -536,6 +520,5 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.Button btnComandaProduse;
     }
 }

@@ -41,9 +41,9 @@
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.panelStatistici = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelNrProduse = new System.Windows.Forms.Label();
+            this.labelNrEvenimente = new System.Windows.Forms.Label();
+            this.labelNrClienti = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -177,9 +177,9 @@
             // 
             this.panelStatistici.BackColor = System.Drawing.Color.SandyBrown;
             this.panelStatistici.Controls.Add(this.label6);
-            this.panelStatistici.Controls.Add(this.label11);
-            this.panelStatistici.Controls.Add(this.label9);
-            this.panelStatistici.Controls.Add(this.label7);
+            this.panelStatistici.Controls.Add(this.labelNrProduse);
+            this.panelStatistici.Controls.Add(this.labelNrEvenimente);
+            this.panelStatistici.Controls.Add(this.labelNrClienti);
             this.panelStatistici.Controls.Add(this.label10);
             this.panelStatistici.Controls.Add(this.label19);
             this.panelStatistici.Controls.Add(this.label5);
@@ -203,38 +203,38 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "Statistici";
             // 
-            // label11
+            // labelNrProduse
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label11.Location = new System.Drawing.Point(123, 495);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(46, 26);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Nr:";
+            this.labelNrProduse.AutoSize = true;
+            this.labelNrProduse.Font = new System.Drawing.Font("Arial", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNrProduse.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.labelNrProduse.Location = new System.Drawing.Point(123, 495);
+            this.labelNrProduse.Name = "labelNrProduse";
+            this.labelNrProduse.Size = new System.Drawing.Size(46, 26);
+            this.labelNrProduse.TabIndex = 2;
+            this.labelNrProduse.Text = "Nr:";
             // 
-            // label9
+            // labelNrEvenimente
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label9.Location = new System.Drawing.Point(123, 314);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 26);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Nr:";
+            this.labelNrEvenimente.AutoSize = true;
+            this.labelNrEvenimente.Font = new System.Drawing.Font("Arial", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNrEvenimente.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.labelNrEvenimente.Location = new System.Drawing.Point(123, 314);
+            this.labelNrEvenimente.Name = "labelNrEvenimente";
+            this.labelNrEvenimente.Size = new System.Drawing.Size(46, 26);
+            this.labelNrEvenimente.TabIndex = 2;
+            this.labelNrEvenimente.Text = "Nr:";
             // 
-            // label7
+            // labelNrClienti
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label7.Location = new System.Drawing.Point(123, 142);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 26);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Nr:";
+            this.labelNrClienti.AutoSize = true;
+            this.labelNrClienti.Font = new System.Drawing.Font("Arial", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNrClienti.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.labelNrClienti.Location = new System.Drawing.Point(123, 142);
+            this.labelNrClienti.Name = "labelNrClienti";
+            this.labelNrClienti.Size = new System.Drawing.Size(46, 26);
+            this.labelNrClienti.TabIndex = 2;
+            this.labelNrClienti.Text = "Nr:";
             // 
             // label10
             // 
@@ -302,7 +302,7 @@
             this.pictureBox8.TabIndex = 1;
             this.pictureBox8.TabStop = false;
             // 
-            // HomeContainer
+            // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -310,7 +310,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.panelStatistici);
-            this.Name = "HomeContainer";
+            this.Name = "Home";
             this.Size = new System.Drawing.Size(1030, 668);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -338,9 +338,9 @@
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Panel panelStatistici;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelNrProduse;
+        private System.Windows.Forms.Label labelNrEvenimente;
+        private System.Windows.Forms.Label labelNrClienti;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label5;

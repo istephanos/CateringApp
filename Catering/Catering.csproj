@@ -104,12 +104,6 @@
     <Compile Include="Client.Designer.cs">
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
-    <Compile Include="ComandaProdus.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ComandaProdus.Designer.cs">
-      <DependentUpon>ComandaProdus.cs</DependentUpon>
-    </Compile>
     <Compile Include="Eveniment.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -138,9 +132,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ComandaProdus.resx">
-      <DependentUpon>ComandaProdus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Eveniment.resx">
       <DependentUpon>Eveniment.cs</DependentUpon>

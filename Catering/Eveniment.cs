@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
 
+using System;
 using System.Configuration;
 using System.Data;
-using Oracle.ManagedDataAccess.Client;
-using System.Windows.Forms;
-using System.Windows.Input;
 using System.Drawing;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace Catering
 {
@@ -21,6 +20,8 @@ namespace Catering
             this.connectionString = ConfigurationManager.AppSettings["OracleConnectionString"];
             ShowEvents();
             GetClientName();
+            toggleStatusEveniment();
+            ShowProductsInListView();
             EvenimentDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             EvenimentDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             EvenimentDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -58,6 +59,43 @@ namespace Catering
             }
         }
 
+        private void ShowProductsInListView()
+        {
+            try
+            {
+                using (OracleConnection con = new OracleConnection(connectionString))
+                {
+                    con.Open();
+                    string query = "SELECT * FROM Produse";
+                    OracleCommand cmd = new OracleCommand(query, con);
+                    OracleDataReader reader = cmd.ExecuteReader();
+
+                    listViewProduse.Clear(); // Curățați ListView pentru a evita duplicarea datelor
+                    listViewProduse.View=View.List;
+
+                    
+                    while (reader.Read())
+                    {
+                        ListViewItem item = new ListViewItem(); // Creați un nou element ListViewItem pentru fiecare produs
+
+                        item.Text = reader["DESCRIERE_PRODUS"].ToString(); // Setarea primului sub-element (coloana principală)
+
+                        // Adăugați celelalte sub-elemente (coloane) în elementul ListViewItem
+                        item.SubItems.Add(reader["DENUMIRE_PRODUS"].ToString());
+                        // ...
+
+                        listViewProduse.Items.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+
         private void reset()
         {
             denumireEvenimentTb.Clear();
@@ -65,21 +103,6 @@ namespace Catering
             statusCb.ResetText();
             nrInvitatiNUD.ResetText();
             adresaEvenimentTb.Clear();
-        }
-
-        private void GetIdClient()
-        {
-            OracleConnection con = new OracleConnection(connectionString);
-            con.Open();
-            OracleCommand cmd = new OracleCommand("SELECT ID_CLIENT FROM Clienti", con);
-            OracleDataReader Rdr;
-            Rdr = cmd.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Id Client", typeof(int));
-            dt.Load(Rdr);
-            numeClientCb.ValueMember = "Id Client";
-            numeClientCb.DataSource = dt;
-            con.Close();
         }
 
         private void GetClientName()
@@ -108,7 +131,6 @@ namespace Catering
             numeClientCb.DataSource = dt;
             con.Close();
         }
-
 
         private string GetClientNameById(int clientId)
         {
@@ -169,7 +191,17 @@ namespace Catering
 
         private void btnSalvare_Click(object sender, EventArgs e)
         {
-            if(denumireEvenimentTb.Text=="" || numeClientCb.Text=="" || statusCb.Text=="" || nrInvitatiNUD.Value==0 || adresaEvenimentTb.Text=="")
+            // Obțineți data curentă
+            DateTime dataCurenta = DateTime.Now.Date;
+
+            // Verificați dacă data livrării este mai mică decât data curentă
+            if (dataLivrariiDTP.Value < dataCurenta)
+            {
+                MessageBox.Show("Data livrării trebuie să fie mai mare sau egală cu data curentă.", "Eroare de validare", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (denumireEvenimentTb.Text=="" || numeClientCb.Text=="" || statusCb.Text=="" || nrInvitatiNUD.Value==0 || adresaEvenimentTb.Text=="")
             {
                 MessageBox.Show("Lipsesc informatii. Asigurati-va ca ati introdus toate datele cerute!");
             }
@@ -207,6 +239,31 @@ namespace Catering
             }
         }
 
+        private void toggleStatusEveniment()
+        {
+            using (var oracleConection = new OracleConnection(connectionString))
+            {
+                oracleConection.Open();
+
+                // Obțineți data livrării din controldate
+                DateTime dataLivrarii = dataLivrariiDTP.Value;
+
+                // Verificați dacă data curentă depășește data livrării
+                if (DateTime.Now.Date > dataLivrarii.Date)
+                {
+                    // Actualizați statusul evenimentului ca "finalizat"
+                    using (var updateCommand = new OracleCommand(@"UPDATE Evenimente SET STATUS_COMANDA = 'Finalizat' WHERE ID_EVENIMENT = :KEY", oracleConection))
+                    {
+                        updateCommand.Parameters.Add("KEY", OracleDbType.Decimal).Value = key;
+                        updateCommand.ExecuteNonQuery();
+                    }
+                }
+                oracleConection.Close();
+
+            }
+
+        }
+
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (denumireEvenimentTb.Text == "" || numeClientCb.Text == "" || statusCb.Text == "" || nrInvitatiNUD.Value == 0 || adresaEvenimentTb.Text == "")
@@ -235,7 +292,22 @@ namespace Catering
                             oracleCommand.Parameters.Add("KEY", OracleDbType.Decimal).Value = key;
 
                             oracleCommand.ExecuteNonQuery(); // <- adaugare
+                         
                         }
+                        // Obțineți data livrării din DataGridView
+                        DateTime dataLivrarii = Convert.ToDateTime(EvenimentDGV.CurrentRow.Cells[4].Value);
+
+                        // Verificați dacă data curentă depășește data livrării
+                        if (DateTime.Now.Date > dataLivrarii.Date)
+                        {
+                            // Actualizați statusul evenimentului ca "finalizat"
+                            using (var updateCommand = new OracleCommand(@"UPDATE Evenimente SET STATUS_COMANDA = 'Finalizat' WHERE ID_EVENIMENT = :KEY", oracleConection))
+                            {
+                                updateCommand.Parameters.Add("KEY", OracleDbType.Decimal).Value = key;
+                                updateCommand.ExecuteNonQuery();
+                            }
+                        }
+
                     }
                     reset();
                     MessageBox.Show("Eveniment editat cu succes!");
@@ -303,19 +375,24 @@ namespace Catering
 
         private void eventAdresaEvenimentTb(object sender, EventArgs e)
         {
+            Console.Write("Am intrat aici cu valoarea: " + adresaEvenimentTb.Text);
+
             if (string.IsNullOrEmpty(adresaEvenimentTb.Text))
             {
                 labelAdresa.ForeColor = Color.Black;
                 errorProvider1.Clear();
             }
-            else if (adresaEvenimentTb.Text.Length > 50 || !Regex.IsMatch(adresaEvenimentTb.Text, @"^[a-zA-Z][a-zA-Z0-9 ]*$"))
+            else if (adresaEvenimentTb.Text.Length > 50 || !Regex.IsMatch(adresaEvenimentTb.Text, @"^[a-zA-Z][a-zA-Z0-9.,; ]*$"))
             {
+                Console.Write("Am intrat aici cu valoarea: " + adresaEvenimentTb.Text);
+
                 labelAdresa.ForeColor = Color.Red;
-                errorProvider1.SetError(adresaEvenimentTb, "Denumirea evenimentului este incorecta (doar litere, cifre,excluzand " +
-                    "primul caracter care trebuie sa fie obligatoriu o litera, si spatiu)!");
+                errorProvider1.SetError(adresaEvenimentTb, "Adresa evenimentului este incorectă (doar litere, cifre, puncte, virgule și punct și virgulă între cuvinte, excluzând primul caracter care trebuie să fie obligatoriu o literă și spațiu)!");
             }
             else
             {
+                Console.Write("Am intrat aici cu valoarea: " + adresaEvenimentTb.Text);
+
                 labelAdresa.ForeColor = Color.Black;
                 errorProvider1.Clear();
             }

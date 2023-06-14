@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.EvenimentDGV = new System.Windows.Forms.DataGridView();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -52,8 +52,6 @@
             this.labelDenumireEveniment = new System.Windows.Forms.Label();
             this.denumireEvenimentTb = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label5 = new System.Windows.Forms.Label();
-            this.listViewProduse = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.EvenimentDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nrInvitatiNUD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -61,38 +59,38 @@
             // 
             // EvenimentDGV
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Gold;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SandyBrown;
-            this.EvenimentDGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gold;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SandyBrown;
+            this.EvenimentDGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.EvenimentDGV.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkGoldenrod;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.PeachPuff;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Peru;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.EvenimentDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGoldenrod;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.PeachPuff;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Peru;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.EvenimentDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.EvenimentDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SandyBrown;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.EvenimentDGV.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SandyBrown;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.EvenimentDGV.DefaultCellStyle = dataGridViewCellStyle3;
             this.EvenimentDGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.EvenimentDGV.Location = new System.Drawing.Point(30, 355);
             this.EvenimentDGV.Name = "EvenimentDGV";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.DarkGoldenrod;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.PapayaWhip;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.SaddleBrown;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.EvenimentDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkGoldenrod;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.PapayaWhip;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.EvenimentDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.EvenimentDGV.RowHeadersWidth = 51;
             this.EvenimentDGV.RowTemplate.Height = 24;
             this.EvenimentDGV.Size = new System.Drawing.Size(976, 282);
@@ -102,7 +100,7 @@
             // btnEdit
             // 
             this.btnEdit.Font = new System.Drawing.Font("Britannic Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(420, 252);
+            this.btnEdit.Location = new System.Drawing.Point(376, 252);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(127, 43);
             this.btnEdit.TabIndex = 15;
@@ -113,7 +111,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Britannic Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(642, 252);
+            this.btnDelete.Location = new System.Drawing.Point(598, 252);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(127, 43);
             this.btnDelete.TabIndex = 16;
@@ -124,7 +122,7 @@
             // btnSalvare
             // 
             this.btnSalvare.Font = new System.Drawing.Font("Britannic Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvare.Location = new System.Drawing.Point(190, 252);
+            this.btnSalvare.Location = new System.Drawing.Point(146, 252);
             this.btnSalvare.Name = "btnSalvare";
             this.btnSalvare.Size = new System.Drawing.Size(127, 43);
             this.btnSalvare.TabIndex = 14;
@@ -136,7 +134,7 @@
             // 
             this.labelNumeClient.AutoSize = true;
             this.labelNumeClient.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNumeClient.Location = new System.Drawing.Point(291, 73);
+            this.labelNumeClient.Location = new System.Drawing.Point(270, 73);
             this.labelNumeClient.Name = "labelNumeClient";
             this.labelNumeClient.Size = new System.Drawing.Size(193, 31);
             this.labelNumeClient.TabIndex = 8;
@@ -166,7 +164,7 @@
             // 
             this.numeClientCb.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numeClientCb.FormattingEnabled = true;
-            this.numeClientCb.Location = new System.Drawing.Point(297, 107);
+            this.numeClientCb.Location = new System.Drawing.Point(276, 107);
             this.numeClientCb.Name = "numeClientCb";
             this.numeClientCb.Size = new System.Drawing.Size(177, 32);
             this.numeClientCb.TabIndex = 8;
@@ -174,7 +172,7 @@
             // adresaEvenimentTb
             // 
             this.adresaEvenimentTb.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adresaEvenimentTb.Location = new System.Drawing.Point(520, 187);
+            this.adresaEvenimentTb.Location = new System.Drawing.Point(499, 187);
             this.adresaEvenimentTb.Name = "adresaEvenimentTb";
             this.adresaEvenimentTb.Size = new System.Drawing.Size(228, 30);
             this.adresaEvenimentTb.TabIndex = 12;
@@ -184,7 +182,7 @@
             // 
             this.labelDataLivrarii.AutoSize = true;
             this.labelDataLivrarii.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDataLivrarii.Location = new System.Drawing.Point(514, 73);
+            this.labelDataLivrarii.Location = new System.Drawing.Point(493, 73);
             this.labelDataLivrarii.Name = "labelDataLivrarii";
             this.labelDataLivrarii.Size = new System.Drawing.Size(225, 31);
             this.labelDataLivrarii.TabIndex = 7;
@@ -193,7 +191,7 @@
             // dataLivrariiDTP
             // 
             this.dataLivrariiDTP.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataLivrariiDTP.Location = new System.Drawing.Point(520, 107);
+            this.dataLivrariiDTP.Location = new System.Drawing.Point(499, 107);
             this.dataLivrariiDTP.Name = "dataLivrariiDTP";
             this.dataLivrariiDTP.Size = new System.Drawing.Size(231, 30);
             this.dataLivrariiDTP.TabIndex = 9;
@@ -202,7 +200,7 @@
             // 
             this.labelAdresa.AutoSize = true;
             this.labelAdresa.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAdresa.Location = new System.Drawing.Point(514, 153);
+            this.labelAdresa.Location = new System.Drawing.Point(493, 153);
             this.labelAdresa.Name = "labelAdresa";
             this.labelAdresa.Size = new System.Drawing.Size(130, 31);
             this.labelAdresa.TabIndex = 7;
@@ -212,7 +210,7 @@
             // 
             this.labelStatus.AutoSize = true;
             this.labelStatus.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStatus.Location = new System.Drawing.Point(24, 153);
+            this.labelStatus.Location = new System.Drawing.Point(3, 153);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(122, 31);
             this.labelStatus.TabIndex = 8;
@@ -225,7 +223,7 @@
             this.statusCb.Items.AddRange(new object[] {
             "in asteptare",
             "finalizata"});
-            this.statusCb.Location = new System.Drawing.Point(30, 187);
+            this.statusCb.Location = new System.Drawing.Point(9, 187);
             this.statusCb.Name = "statusCb";
             this.statusCb.Size = new System.Drawing.Size(226, 32);
             this.statusCb.TabIndex = 10;
@@ -234,7 +232,7 @@
             // 
             this.labelNrInvitati.AutoSize = true;
             this.labelNrInvitati.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNrInvitati.Location = new System.Drawing.Point(291, 153);
+            this.labelNrInvitati.Location = new System.Drawing.Point(270, 153);
             this.labelNrInvitati.Name = "labelNrInvitati";
             this.labelNrInvitati.Size = new System.Drawing.Size(181, 31);
             this.labelNrInvitati.TabIndex = 8;
@@ -243,7 +241,7 @@
             // nrInvitatiNUD
             // 
             this.nrInvitatiNUD.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nrInvitatiNUD.Location = new System.Drawing.Point(297, 188);
+            this.nrInvitatiNUD.Location = new System.Drawing.Point(276, 188);
             this.nrInvitatiNUD.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -257,7 +255,7 @@
             // 
             this.labelDenumireEveniment.AutoSize = true;
             this.labelDenumireEveniment.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDenumireEveniment.Location = new System.Drawing.Point(24, 73);
+            this.labelDenumireEveniment.Location = new System.Drawing.Point(3, 73);
             this.labelDenumireEveniment.Name = "labelDenumireEveniment";
             this.labelDenumireEveniment.Size = new System.Drawing.Size(232, 31);
             this.labelDenumireEveniment.TabIndex = 7;
@@ -266,7 +264,7 @@
             // denumireEvenimentTb
             // 
             this.denumireEvenimentTb.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.denumireEvenimentTb.Location = new System.Drawing.Point(30, 107);
+            this.denumireEvenimentTb.Location = new System.Drawing.Point(9, 107);
             this.denumireEvenimentTb.Name = "denumireEvenimentTb";
             this.denumireEvenimentTb.Size = new System.Drawing.Size(226, 30);
             this.denumireEvenimentTb.TabIndex = 7;
@@ -276,32 +274,11 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Algerian", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(777, 73);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(140, 31);
-            this.label5.TabIndex = 36;
-            this.label5.Text = "Produse";
-            // 
-            // listViewProduse
-            // 
-            this.listViewProduse.HideSelection = false;
-            this.listViewProduse.Location = new System.Drawing.Point(783, 107);
-            this.listViewProduse.Name = "listViewProduse";
-            this.listViewProduse.Size = new System.Drawing.Size(223, 188);
-            this.listViewProduse.TabIndex = 13;
-            this.listViewProduse.UseCompatibleStateImageBehavior = false;
-            // 
             // Eveniment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.Controls.Add(this.listViewProduse);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.nrInvitatiNUD);
             this.Controls.Add(this.dataLivrariiDTP);
             this.Controls.Add(this.denumireEvenimentTb);
@@ -351,7 +328,5 @@
         private System.Windows.Forms.Label labelDenumireEveniment;
         private System.Windows.Forms.TextBox denumireEvenimentTb;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.ListView listViewProduse;
-        private System.Windows.Forms.Label label5;
     }
 }

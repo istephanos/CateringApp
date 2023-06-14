@@ -58,6 +58,12 @@ namespace Catering
             addUC(new Produs());
         }
 
+        private void btnComandaProdus_Click(object sender, EventArgs e)
+        {
+            moveSidePanel(btnProdus);
+            addUC(new ComandaProdus());
+        }
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
             moveSidePanel(btnLogout);
@@ -142,5 +148,7 @@ namespace Catering
                 MessageBox.Show(ex.Message);
             }
         }
+
+        
     }
 }

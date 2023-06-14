@@ -21,7 +21,6 @@ namespace Catering
             ShowEvents();
             GetClientName();
             toggleStatusEveniment();
-            ShowProductsInListView();
             EvenimentDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             EvenimentDGV.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             EvenimentDGV.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -59,42 +58,7 @@ namespace Catering
             }
         }
 
-        private void ShowProductsInListView()
-        {
-            try
-            {
-                using (OracleConnection con = new OracleConnection(connectionString))
-                {
-                    con.Open();
-                    string query = "SELECT * FROM Produse";
-                    OracleCommand cmd = new OracleCommand(query, con);
-                    OracleDataReader reader = cmd.ExecuteReader();
-
-                    listViewProduse.Clear(); // Curățați ListView pentru a evita duplicarea datelor
-                    listViewProduse.View=View.List;
-
-                    
-                    while (reader.Read())
-                    {
-                        ListViewItem item = new ListViewItem(); // Creați un nou element ListViewItem pentru fiecare produs
-
-                        item.Text = reader["DESCRIERE_PRODUS"].ToString(); // Setarea primului sub-element (coloana principală)
-
-                        // Adăugați celelalte sub-elemente (coloane) în elementul ListViewItem
-                        item.SubItems.Add(reader["DENUMIRE_PRODUS"].ToString());
-                        // ...
-
-                        listViewProduse.Items.Add(item);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-
+        
 
         private void reset()
         {
@@ -104,7 +68,7 @@ namespace Catering
             nrInvitatiNUD.ResetText();
             adresaEvenimentTb.Clear();
         }
-
+        
         private void GetClientName()
         {
             OracleConnection con = new OracleConnection(connectionString);

@@ -34,6 +34,7 @@
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panelSlide = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnComandaProdus = new System.Windows.Forms.Button();
             this.btnProdus = new System.Windows.Forms.Button();
             this.btnEveniment = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
@@ -103,6 +104,7 @@
             this.panelLeft.BackColor = System.Drawing.Color.SandyBrown;
             this.panelLeft.Controls.Add(this.panelSlide);
             this.panelLeft.Controls.Add(this.btnLogout);
+            this.panelLeft.Controls.Add(this.btnComandaProdus);
             this.panelLeft.Controls.Add(this.btnProdus);
             this.panelLeft.Controls.Add(this.btnEveniment);
             this.panelLeft.Controls.Add(this.btnHome);
@@ -128,13 +130,27 @@
             this.btnLogout.Font = new System.Drawing.Font("Algerian", 13.8F);
             this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(38, 534);
+            this.btnLogout.Location = new System.Drawing.Point(38, 621);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(247, 75);
             this.btnLogout.TabIndex = 6;
             this.btnLogout.Text = "  Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnComandaProdus
+            // 
+            this.btnComandaProdus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComandaProdus.Font = new System.Drawing.Font("Algerian", 13.8F);
+            this.btnComandaProdus.Image = ((System.Drawing.Image)(resources.GetObject("btnComandaProdus.Image")));
+            this.btnComandaProdus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnComandaProdus.Location = new System.Drawing.Point(38, 531);
+            this.btnComandaProdus.Name = "btnComandaProdus";
+            this.btnComandaProdus.Size = new System.Drawing.Size(247, 75);
+            this.btnComandaProdus.TabIndex = 4;
+            this.btnComandaProdus.Text = "   Comanda";
+            this.btnComandaProdus.UseVisualStyleBackColor = true;
+            this.btnComandaProdus.Click += new System.EventHandler(this.btnComandaProdus_Click);
             // 
             // btnProdus
             // 
@@ -520,5 +536,6 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.Button btnComandaProdus;
     }
 }

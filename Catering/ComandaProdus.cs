@@ -193,7 +193,7 @@ namespace Catering
                     int numarInvitati = GetNumberOfGuests(selectedEventId, con);
 
                     // Preluare produse selectate și cantitățile aferente
-                    foreach (ListViewItem item in listViewProduse.CheckedItems)
+                    foreach (ListViewItem item in listViewProduse.SelectedItems)
                     {
                         string denumireProdus = item.SubItems[1].Text;
                         int idProdus = GetProductIdByName(denumireProdus, con);
